@@ -6,6 +6,10 @@ locals {
 resource "vault_mount" "secret" {
   for_each = local.config
 
+
+  path                         = lookup(each.value, "path")
+  type                         = lookup(each.value, "type")
+
   allowed_managed_keys         = lookup(each.value, "allowed_managed_keys", null)
   audit_non_hmac_response_keys = lookup(each.value, "audit_non_hmac_reponse_keys", null)
   default_lease_ttl_seconds    = lookup(each.value, "default_lease_ttl_seconds", null)
@@ -15,8 +19,6 @@ resource "vault_mount" "secret" {
   max_lease_ttl_seconds        = lookup(each.value, "max_lease_ttl_seconds", null)
   namespace                    = lookup(each.value, "namespace", null)
   options                      = lookup(each.value, "options", null)
-  path                         = lookup(each.value, "path")
   seal_wrap                    = lookup(each.value, "seal_wrap", null)
-  type                         = lookup(each.value, "type")
 }
 

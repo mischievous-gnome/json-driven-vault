@@ -8,7 +8,7 @@ variable "kvv2_secrets_data" {
   default     = "data/secrets/kvv2"
 }
 
-variable "kubernetes_secrets_data" {
+variable "k8s_secrets_data" {
   description = "Localtion of Kubernetes files for Kubernetes secrets mounts"
   default     = "data/secrets/k8s"
 }

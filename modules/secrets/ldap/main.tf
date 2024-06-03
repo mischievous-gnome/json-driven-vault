@@ -1,12 +1,13 @@
 locals {
-  config = { for k,v in var.ldap_config: k => v.config }
+  config = var.ldap_config
 }
 
 resource "vault_ldap_secret_backend" "config" {
-  for_each = local.config
+  for_each = local.config 
 
   binddn                           = lookup(each.value, "binddn")
   bindpass                         = lookup(each.value, "bindpass")
+
   certificate                      = lookup(each.value, "certifiate",null)
   connection_timeout               = lookup(each.value, "connection_timeout",null)
   client_tls_cert                  = lookup(each.value, "client_tls_cert",null)

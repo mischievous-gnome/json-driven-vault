@@ -1,5 +1,5 @@
 locals {
-  config = { for k,v in var.kv_config : k => v.config }
+  config = var.kvv2_config
 }
 
 resource "vault_mount" "kvv2" {
