@@ -5,6 +5,8 @@ locals {
 resource "vault_consul_secret_backend_role" "role" {
   for_each = local.roles
 
+  depends_on = [vault_consul_secret_backend.consul]
+
   name               = lookup(each.value, "name")
   backend            = lookup(each.value, "backend")
 
