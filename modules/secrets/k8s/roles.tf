@@ -11,7 +11,7 @@ resource "vault_kubernetes_secret_backend_role" "roles" {
   backend                               = lookup(each.value, "backend")
   name                                  = lookup(each.value, "name")
  
-  allowed_kubernetes_namespaces         = lookup(each.value, "allowed_kuberntes_namespaces", null)
+  allowed_kubernetes_namespaces         = lookup(each.value, "allowed_kuberntes_namespaces", ["*"])
   allowed_kubernetes_namespace_selector = lookup(each.value, "allowed_kuberntes_namespaces", null)
   extra_labels                          = lookup(each.value, "extra_labels", null) 
   extra_annotations                     = lookup(each.value, "extra_annotations", null)
